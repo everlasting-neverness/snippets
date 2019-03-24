@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<title>Drag & Drop</title>
+</head>
+<body>
+	
+	<form action="" method="POST" id="dropFileForm"
+		ondragover="overrideDefaultEvent(event);fileHover();"
+		ondragenter="overrideDefaultEvent(event);fileHover();"
+		ondragleave="overrideDefaultEvent(event);fileHoverEnd();"
+		ondrop="overrideDefaultEvent(event);fileHoverEnd();addFiles(event);"
+		onsubmit="overrideDefaultEvent(event);uploadFiles(event);" 
+	>
+		<input type="file" name="files[]" id="fileInput" multiple
+			onchange="addFiles(event);" 
+		>
+		<label for="fileInput" id="fileLabel">
+			<i class="fa fa-download fa-5x"></i>
+			<br>
+			<span id="fileLabelText">Choose a file or drag it here</span>
+			<br>
+			<span id="uploadStatus"></span>
+		</label>
+
+		<input type="submit" value="Upload" class="uploadButton">
+	</form>
+
+<script>
+	var dropFileForm = document.getElementById('dropFileForm');
+	var fileLabelText = document.getElementById('fileLabelText');
+	var uploadStatus = document.getElementById('uploadStatus');
+	var fileInput = document.getElementById('fileInput');
+	var droppedFiles;
+
+	function overrideDefaultEvent(e) {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
+	function fileHover() {
+		dropFileForm.classList.add("fileHover");
+	}
+
+	function fileHoverEnd() {
+		dropFileForm.classList.remove("fileHover");
+	}
+
+	function addFiles(e) {
+		droppedFiles = event.target.files || event.dataTransfer.files;
+		showFiles(droppedFiles);
+	}
+
+	function showFiles(files) {
+		if (files.length > 1) {
+			fileLabelText.innerText = files.length + " files selected";
+		}	 else {
+			fileLabelText.innerText = files[0].name;
+		}
+	}
+
+	function uploadFiles(e) {
+		changeStatus("Uploading...");
+
+		var formData = new formData();
+		for (var i = 0, file; file=droppedFiles[i]; i++) {
+			formData.append(fileInput.name, file, file.name);
+		}
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(data) {
+
+		}
+		xhr.open(dropFileForm.method, dropFileForm.action, true);
+		xhr.send(formData);
+		console.log(123)
+	}
+
+	function changeStatus(text) {
+		uploadStatus.innerText = text;
+	}
+
+</script>
+</body>
+</html>

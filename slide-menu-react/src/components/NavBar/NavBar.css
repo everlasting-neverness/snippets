@@ -1,0 +1,41 @@
+.nav-bar {
+  background-color: var(--blue);
+  padding: 12px 5px;
+  font-size: 1.3rem;
+}
+
+.nav-bar a {
+  color: var(--light);
+  text-decoration: none;
+}
+
+.nav-bar a:hover {
+  color: #fff;
+}
+
+.open-slide {
+  padding: 15px 15px;
+}
+
+.nav-bar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar-menu li {
+  display: inline-block;
+  padding: 5px 15px;
+}
+
+@media (max-width: 568px) {
+  .nav-bar-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 568px) {
+  .open-slide {
+    display: none;
+  }
+}

@@ -1,0 +1,42 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+.section {
+	height: 100%;
+	padding: 8px;
+}
+
+.section:nth-child(odd) {
+	background-color: deepPink;
+}
+
+.section:nth-child(even) {
+	background-color: mediumSpringGreen;
+}
+
+#scrollToTopButton {
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	height: 60px;
+	width: 60px;
+	font-style: xx-large;
+	border-radius: 50%;
+	border: 0;
+	outline: 0;
+	background-color: #fff;
+	cursor: pointer;
+	box-shadow: 2px 4px 16px rgba(0,0,0,0.3);
+	opacity: 0;
+	transform: scale(0);
+	visibility: hidden;
+	transition: .2s;
+}
+
+#scrollToTopButton.show {
+	opacity: 1;
+	transform: scale(1);
+	visibility: visible;
+}

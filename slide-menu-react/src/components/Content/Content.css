@@ -1,0 +1,5 @@
+.content {
+  padding: 20px;
+  font-size: 1.1rem;
+  transition: margin-left 0.5s;
+}
