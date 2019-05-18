@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Text fill progress indicator</title>
+  <style>
+    .text-progress {
+      position: fixed;
+      font-size: 5em;
+      font-family: cursive;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ccc;
+    }
+
+    .text-progress .overlay {
+      color: red;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 80%;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="changeProgress(0)">0%</button>
+  <button onclick="changeProgress(25)">25%</button>
+  <button onclick="changeProgress(50)">50%</button>
+  <button onclick="changeProgress(100)">100%</button>
+
+  <div class="text-progress">
+    loading...
+    <div class="overlay">
+      loading...
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const mainProgress = document.querySelector('.text-progress .overlay');
+
+    function changeProgress(to, time = 0.5) {
+      let currentWidth = parseInt(mainProgress.style.width);
+      if(!currentWidth) {
+        width = 0;
+
+      }
+
+      mainProgress.style.transition = Math.abs(time * (to - currentWidth) / 100) + 's linear';
+      mainProgress.style.width = to + '%';
+    }
+  </script>
+</body>
+</html>
