@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Get Random Number</title>
+</head>
+<body>
+    <main class="wrapper">
+        <div class="spinner-wrapper">
+            <div class="spinner"></div>
+        </div>
+        <section class="meta">
+            <h1>Get random number</h1>
+            <p>
+                Pass the number of contestants in the input bellow and press "Generate" button.
+            </p>
+            <p>
+                The script will return the random number within the range from 1 to entered number.
+            </p>
+        </section>
+        <section class="results-wrapper">
+            <p>And the winner is <strong class="result">...</strong></p>
+            <p class="error-container">
+                Please, enter a positive number.
+            </p>
+        </section>            
+        <form id="form" class="form">
+            <label>
+                <span>Enter contestants number:</span>
+                <input class="user-input" type="text">
+            </label>
+            <div class="buttons-container">
+                <button class="submit-btn">Generate</button>
+                <button class="reset-btn">Reset</button>
+            </div>
+        </form>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
